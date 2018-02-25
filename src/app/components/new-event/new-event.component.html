@@ -1,0 +1,49 @@
+<div class="container">
+  <form #eventsList="ngForm">
+    <div class="col-md-6">
+      <h3 style="margin-top: 15px;">Podaj informację dotyczące szkolenia</h3>
+      <hr/>
+    </div>
+
+    <div class="col-md-4">
+      <input type="text" class="form-control" id="title" type="text" placeholder="Title of training" [(ngModel)]="newEvent.title"
+        name="title" required>
+    </div>
+
+    <label for="date">Event date:</label>
+    <div class="col-md-4">
+      <input matInput [matDatepicker]="picker" id="eventDate" type="date" placeholder="Pick a date" [(ngModel)]="newEvent.eventDate"
+        name="eventDate">
+    </div>
+
+    <div class="col-md-4">
+      <input id="people" class="form-control" type="number" placeholder="Maximum number of members" [(ngModel)]="newEvent.people"
+        name="people" required [formControl]="minNumber">
+      <div *ngIf="minNumber.invalid && (minNumber.dirty || minNumber.touched)" class="alert alert-danger">
+        <div *ngIf="minNumber.errors.required">
+          Number of members is required.
+        </div>
+        <div *ngIf="minNumber.errors.invalid">
+          Maximum members must contains at least 1 person.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <input class="form-control" id="city" type="text" placeholder="City" [(ngModel)]="newEvent.city" name="city" required>
+    </div>
+
+    <div class="col-md-4">
+      <input class="form-control" id="adress" type="text" placeholder="Adress" [(ngModel)]="newEvent.adress" name="adress" required>
+    </div>
+
+    <div class="col-md-4">
+      <textarea class="form-control" id="description" placeholder="Description of training" [(ngModel)]="newEvent.description"
+        name="description" required></textarea>
+    </div>
+    <div style="margin-left: 15px; margin-top: 15px;">
+      <button class="btn btn-primary" [disabled]="eventsList.form.invalid" (click)="createEvent()">Add the training</button>
+      <button class="btn btn-danger" routerLink="/EventList" color="warn">Cancel</button>
+    </div>
+  </form>
+</div>

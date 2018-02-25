@@ -1,0 +1,70 @@
+<div class="container">
+    <h1>Upcoming Trainings</h1>
+    <hr/>
+    <div class="row">
+        <div style="margin-top: 25px;" class="col-sm-4" *ngFor="let events of event">
+
+            <h3>
+                <b>
+                    <i>{{events.title}}</i>
+                </b>
+            </h3>
+
+            <div>
+                <b>Event date:</b> {{events.eventDate | date:'shortDate'}}
+            </div>
+
+            <div>
+                <b>Number of members:</b> {{events.people}}
+            </div>
+
+            <div>
+                <b>City:</b> {{events.city}}
+            </div>
+
+            <div>
+                <b>Adress:</b> {{events.adress}}
+            </div>
+
+            <div>
+                <b>Description:</b> {{events.description}}
+            </div>
+
+
+            <button style="margin-top: 15px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Register for training</button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Please input the data</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Mail:</label>
+                                    <input type="text" class="form-control" id="mail" placeholder="example@gmail.com" [(ngModel)]="person.mail" name="mail"> 
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Name:</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Your first name" [(ngModel)]="person.name" name="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Lastname:</label>
+                                    <input type="text" class="form-control" id="lastname" placeholder="Your last name" [(ngModel)]="person.lastName" name="lastName">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
