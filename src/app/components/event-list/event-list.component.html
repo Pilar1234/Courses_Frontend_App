@@ -2,7 +2,7 @@
     <h1>Upcoming Trainings</h1>
     <hr/>
     <div class="row">
-        <div style="margin-top: 25px;" class="col-sm-4" *ngFor="let events of event">
+        <div class="col-sm-4" *ngFor="let events of event">
 
             <h3>
                 <b>
@@ -17,7 +17,9 @@
             <div>
                 <b>Number of members:</b> {{events.people}}
             </div>
-
+            <div>
+                <b>Registered participants:</b> 
+            </div>
             <div>
                 <b>City:</b> {{events.city}}
             </div>
@@ -26,45 +28,44 @@
                 <b>Adress:</b> {{events.adress}}
             </div>
 
-            <div>
+            <div style="text-align: justify;">
                 <b>Description:</b> {{events.description}}
             </div>
-
 
             <button style="margin-top: 15px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Register for training</button>
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Please input the data</h5>
+                    <div style="color:darkgrey;" class="modal-content">
+                        <div  class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel" >Please input the data</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form #membersForm="ngForm">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Mail:</label>
-                                    <input type="text" class="form-control" id="mail" placeholder="example@gmail.com" [(ngModel)]="person.mail" name="mail"> 
+                                    <input type="text" class="form-control" id="email" placeholder="example@gmail.com" [(ngModel)]="newPerson.email" name="email"
+                                     required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"> 
                                 </div>
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Name:</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Your first name" [(ngModel)]="person.name" name="name">
+                                    <input type="text" class="form-control" id="name" placeholder="Your first name" [(ngModel)]="newPerson.name" name="name" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Lastname:</label>
-                                    <input type="text" class="form-control" id="lastname" placeholder="Your last name" [(ngModel)]="person.lastName" name="lastName">
+                                    <input type="text" class="form-control" id="lastname" placeholder="Your last name" [(ngModel)]="newPerson.lastName" name="lastName" required>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Register</button>
+                            <button type="button" [disabled]="membersForm.form.invalid" class="btn btn-primary" data-dismiss="modal" (click)="addMember()">Register</button>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

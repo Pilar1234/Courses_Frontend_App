@@ -5,4 +5,5 @@ export class Event {
      city: string;
      adress: string;
      description: string;
+     membersNumber: number;
 }

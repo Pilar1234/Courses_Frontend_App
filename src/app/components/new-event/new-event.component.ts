@@ -9,18 +9,16 @@ import { FormGroup } from '@angular/forms';
   selector: 'app-new-event',
   templateUrl: './new-event.component.html',
   styleUrls: ['./new-event.component.css'],
-
 })
 export class NewEventComponent implements OnInit {
-  form:FormGroup;
+  
     minNumber = new FormControl('', [Validators.min(1), Validators.required]);
     touched = new FormControl('', Validators.required);
-
 
   private newEvent: Event = new Event();
   private eventAdded: boolean;
 
-  constructor(private fb: FormBuilder, private toastr: ToastsManager, private addEventService: AddEventService) {
+  constructor(private addEventService: AddEventService) {
 
   }
 
@@ -31,9 +29,6 @@ export class NewEventComponent implements OnInit {
       });
   }
 
-  private newMethod() {
-    this.toastr.success('Event created succesfully', 'Success!');
-  }
 
   ngOnInit() {
   }

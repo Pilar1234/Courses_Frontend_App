@@ -13,6 +13,7 @@ import { NewEventComponent } from './components/new-event/new-event.component';
 import { AddEventService } from './services/add-event.service';
 import { HttpClientModule } from '@angular/common/http';
 import { EventListComponent } from './components/event-list/event-list.component';
+import { AddMemberService } from './services/add-member.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { EventListComponent } from './components/event-list/event-list.component
     MaterialModule
   ],
   providers: [
-    AddEventService
+    AddEventService,
+    AddMemberService
   ],
   bootstrap: [AppComponent]
 })

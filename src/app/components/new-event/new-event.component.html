@@ -1,7 +1,7 @@
 <div class="container">
   <form #eventsList="ngForm">
     <div class="col-md-6">
-      <h3 style="margin-top: 15px;">Podaj informację dotyczące szkolenia</h3>
+      <h3 style="margin-top: 15px;">Give the information about the course</h3>
       <hr/>
     </div>
 
@@ -9,8 +9,6 @@
       <input type="text" class="form-control" id="title" type="text" placeholder="Title of training" [(ngModel)]="newEvent.title"
         name="title" required>
     </div>
-
-    <label for="date">Event date:</label>
     <div class="col-md-4">
       <input matInput [matDatepicker]="picker" id="eventDate" type="date" placeholder="Pick a date" [(ngModel)]="newEvent.eventDate"
         name="eventDate">
@@ -42,8 +40,9 @@
         name="description" required></textarea>
     </div>
     <div style="margin-left: 15px; margin-top: 15px;">
-      <button class="btn btn-primary" [disabled]="eventsList.form.invalid" (click)="createEvent()">Add the training</button>
+      <button class="btn btn-primary" [disabled]="eventsList.form.invalid" routerLink="/EventList" (click)="createEvent()">Add the training</button>
       <button class="btn btn-danger" routerLink="/EventList" color="warn">Cancel</button>
     </div>
   </form>
 </div>
+

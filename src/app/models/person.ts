@@ -1,5 +1,5 @@
 export class Person {
-    public mail: string;
+    public email: string;
     public name: string;
     public lastName: string;
 }
